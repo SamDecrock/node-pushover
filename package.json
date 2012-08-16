@@ -1,7 +1,7 @@
 {
   "name": "node-pushover",
   "description": "node.js pushover module for https://pushover.net/api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "Sam Decrock",
     "url": "https://github.com/SamDecrock/"
