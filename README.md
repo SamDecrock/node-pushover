@@ -6,7 +6,7 @@ node.js pushover module for https://pushover.net/api
 ## Quick Example
 
 ```js
-var pushover = require('./lib/pushover');
+var pushover = require('node-pushover');
 
 pushover.send({  
 	token: "YOUR APP TOKEN",
