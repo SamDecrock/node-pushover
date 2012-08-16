@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git://github.com/SamDecrock/node-pushover.git"
   },
-  "main": "pushover",
+  "main": "./pushover",
   "licenses": [
     {
       "type": "MIT",
