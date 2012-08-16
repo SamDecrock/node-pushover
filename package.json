@@ -1,5 +1,5 @@
 {
-  "name": "cron",
+  "name": "node-pushover",
   "description": "node.js pushover module for https://pushover.net/api",
   "version": "0.0.1",
   "author": {
