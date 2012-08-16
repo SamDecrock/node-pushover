@@ -3,7 +3,13 @@ node-pushover
 
 node.js pushover module for https://pushover.net/api
 
-## Quick Example
+## Install
+
+You can install node-pushover using the Node Package Manager (npm):
+
+    npm install node-pushover
+
+## Example
 
 ```js
 var pushover = require('node-pushover');
