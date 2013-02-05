@@ -30,7 +30,7 @@ __Example with the USERKEY given at initialisation__
 ```js
 var Pushover = require('./pushover');
 var push = new Pushover({
-	token: "APPTOKEM",
+	token: "APPTOKEN",
 	user: "USERKEY"
 });
 
