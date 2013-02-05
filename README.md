@@ -11,11 +11,11 @@ You can install node-pushover using the Node Package Manager (npm):
 
 ## How to use
 
-### new Pushover({ token: "APPTOKEM", [user: "USERKEY"]});
+### Initialization: new Pushover({ token: "APPTOKEN" [, user: "USERKEY"]});
 
-Initialises a Pushover object with the __APPTOKEM__ and optionally a __USERKEY__ . The __USERKEY__ can also be given when sending the messages.
+Initializes a Pushover object with the __APPTOKEN__ and optionally a __USERKEY__ . The __USERKEY__ can also be given when sending the messages.
 
-### push.send([USERKEY], title, message, [callback])
+### Sending messages: push.send([USERKEY,] title, message [,callback])
 
 __Arguments__
  - USERKEY: (optional) The __USERKEY__ as given to you by the Pushover API.
@@ -49,7 +49,7 @@ push.send("Some title", "Node.js is Cool!!", function (err, res){
 ```
 
 
-__Example With the USERKEY given at when the message is send__
+__Example with the USERKEY given when the message is send__
 
 ```js
 var Pushover = require('./pushover');
