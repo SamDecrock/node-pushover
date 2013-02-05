@@ -9,13 +9,15 @@ You can install node-pushover using the Node Package Manager (npm):
 
     npm install node-pushover
 
-## How to use
+## Initialization
 
-### Initialization: new Pushover({ token: "APPTOKEN" [, user: "USERKEY"]});
+### new Pushover({ token: "APPTOKEN" [, user: "USERKEY"]});
 
 Initializes a Pushover object with the __APPTOKEN__ and optionally a __USERKEY__ . The __USERKEY__ can also be given when sending the messages.
 
-### Sending messages: push.send([USERKEY,] title, message [,callback])
+## Sending messages
+
+### push.send([USERKEY,] title, message [,callback])
 
 __Arguments__
  - USERKEY: (optional) The __USERKEY__ as given to you by the Pushover API.
