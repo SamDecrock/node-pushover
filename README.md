@@ -28,7 +28,7 @@ __Arguments__
 __Example with the USERKEY given at initialisation__
 
 ```js
-var Pushover = require('./pushover');
+var Pushover = require('node-pushover');
 var push = new Pushover({
 	token: "APPTOKEN",
 	user: "USERKEY"
@@ -54,7 +54,7 @@ push.send("Some title", "Node.js is Cool!!", function (err, res){
 __Example with the USERKEY given when the message is send__
 
 ```js
-var Pushover = require('./pushover');
+var Pushover = require('node-pushover');
 var push = new Pushover({
 	token: "APPTOKEN"
 });
