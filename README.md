@@ -17,12 +17,13 @@ Initializes a Pushover object with the __APPTOKEN__ and optionally a __USERKEY__
 
 ## Sending messages
 
-### push.send([USERKEY,] title, message [,callback])
+### push.send([USERKEY,] title, message, [image], [,callback])
 
 __Arguments__
  - USERKEY: (optional) The __USERKEY__ as given to you by the Pushover API.
  - title: The title for your message
  - message: The content for your message
+ - image: (optional) Path to image if you want to attach an image
  - callback(err, res): (optional) A callback function which is called when the message is send.
 
 __Example with the USERKEY given at initialisation__
@@ -39,14 +40,8 @@ push.send("Some title", "Node.js is Cool!! - no callback");
 
 // A callback function is defined:
 push.send("Some title", "Node.js is Cool!!", function (err, res){
-	if(err){
-		console.log("We have an error:");
-		console.log(err);
-		console.log(err.stack);
-	}else{
-		console.log("Message send successfully");
-		console.log(res);
-	}
+	if(err) return console.log(err);
+	console.log(res);
 });
 ```
 
@@ -58,20 +53,21 @@ var Pushover = require('node-pushover');
 var push = new Pushover({
 	token: "APPTOKEN"
 });
+var path = require('path');
 
 // No callback function defined:
 push.send("USERKEY", "Some title", "Node.js is Cool!! - no callback");
 
 // A callback function is defined:
-push.send("USERKEY", "Some title", "Node.js is Cool!!", function (err, res){
-	if(err){
-		console.log("We have an error:");
-		console.log(err);
-		console.log(err.stack);
-	}else{
-		console.log("Message send successfully");
-		console.log(res);
-	}
+push.send("USERKEY", "Some title", "Node.js is Cool!!", function (err, res) {
+	if(err) return console.log(err);
+	console.log(res);
+});
+
+// Attach image:
+push.send("USERKEY", "Some title", "Node.js is Cool!!", path.join(__dirname, 'your-image.jpg'), function (err, res) {
+	if(err) return console.log(err);
+	console.log(res);
 });
 ```
 

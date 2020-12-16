@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013 Sam Decrock <sam.decrock@gmail.com>
+Copyright (c) 2020 Sam Decrock <sam.decrock@gmail.com>
 
 MIT License
 
@@ -38,9 +38,9 @@ function Pushover(options) {
 }
 
 /**
- * send([user,] title, message, [callback])
+ * send([user,] title, message, [image], [callback])
  */
-Pushover.prototype.send = function(arg1, arg2, arg3, arg4) {
+Pushover.prototype.send = function(arg1, arg2, arg3, arg4, arg5) {
 	if( arguments.length == 2 ){
 		// (title, message)
 		if(!this.user) {
@@ -53,7 +53,7 @@ Pushover.prototype.send = function(arg1, arg2, arg3, arg4) {
 			user: this.user,
 			title: arg1,
 			message: arg2
-		});
+		}, null, null);
 	}
 
 	if( arguments.length == 3 ){
@@ -68,7 +68,7 @@ Pushover.prototype.send = function(arg1, arg2, arg3, arg4) {
 				user: this.user,
 				title: arg1,
 				message: arg2
-			}, arg3);
+			}, null, arg3);
 
 		}else{
 			// (user, title, message)
@@ -77,24 +77,47 @@ Pushover.prototype.send = function(arg1, arg2, arg3, arg4) {
 				user: arg1,
 				title: arg2,
 				message: arg3
-			});
+			}, null, null);
 
 		}
 	}
 
 	if( arguments.length == 4 ){
-		// (user, title, message, callback)
+		// (user, title, message, callback/image)
+		if (typeof arg4 === 'function') {
+			send({
+				token: this.token,
+				user: arg1,
+				title: arg2,
+				message: arg3
+			}, null, arg4);
+		}else{
+			send({
+				token: this.token,
+				user: arg1,
+				title: arg2,
+				message: arg3
+			}, arg4, null);
+		}
+
+	}
+
+	if( arguments.length == 5 ){
+		// (user, title, message, image, callback)
 		send({
 			token: this.token,
 			user: arg1,
 			title: arg2,
 			message: arg3
-		}, arg4);
+		}, arg4, arg5);
 	}
 };
 
-function send(parameters, callback){
-	httpreq.post("https://api.pushover.net/1/messages.json", { parameters: parameters}, function (err, res){
+function send(parameters, image, callback) {
+	var options = { parameters: parameters };
+	if(image) options.files = {attachment: image}; // key is used as parameter name
+
+	httpreq.post("https://api.pushover.net/1/messages.json", options, function (err, res){
 		if (callback && typeof callback === "function"){
 			if(err){
 				callback(err);
